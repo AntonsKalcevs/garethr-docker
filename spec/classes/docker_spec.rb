@@ -337,7 +337,7 @@ describe 'docker', :type => :class do
             'use_upstream_package_source' => false,
             'package_name'                => 'docker-engine',
             'package_source'              => 'https://get.docker.com/rpm/1.7.0/centos-6/RPMS/x86_64/docker-engine-1.7.0-1.el6.x86_64.rpm',
-            'repo_opt'                    => '--enablerepo=rhel7-extras'
+            'repo_opt'                    => ''
           } }
           it do
             should contain_package('docker').with(
@@ -904,7 +904,7 @@ describe 'docker', :type => :class do
     it { should contain_package('docker').with_name('docker-engine') }
     it { should contain_yumrepo('docker') }
     it { should_not contain_class('epel') }
-    it { should contain_package('docker').with_install_options('--enablerepo=rhel7-extras') }
+    it { should contain_package('docker').with_install_options('') }
 
     let(:params) { {'proxy' => 'http://127.0.0.1:3128' } }
     service_config_file = '/etc/sysconfig/docker'
